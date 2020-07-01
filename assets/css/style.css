@@ -1,0 +1,99 @@
+body {
+    font-family: 'Muli';
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+main {
+    padding: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 10rem;
+}
+
+.container {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.logo {
+    width: auto;
+    height: auto;
+    flex 2;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex 1;
+}
+
+nav ul li {
+    padding-right: 10px;
+}
+
+a {
+    color: #5A4FCF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7065E0;
+}
+
+nav ul li:last-child {
+    padding-right: 0px;;
+}
+
+.landing {
+    margin-top: 10vh;
+}
+
+.landing h1 {
+    font-size: 45px;
+}
+
+.info-pane {
+    font-size: 11px;
+    border: 1px;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 300px;
+    background-color: #1B1A3F;
+    display: inline;
+}
+
+.info-pane span a {
+    color: white;
+    font-size: 8px;
+    background-color: #5A4FCF;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #18181a;
+    color: #bababa;
+    padding: 3rem;
+    bottom: 0;
+    position: fixed;
+}
