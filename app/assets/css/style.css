@@ -1,0 +1,121 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    font-family: 'Muli';
+    font-size: 14px;
+    color: black;
+    background-color: white;
+}
+a {
+    color: #5A4FCF;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7065E0;
+}
+footer {
+    background-color: #18181a;
+    color: #bababa;
+    padding: 1rem;
+    bottom: 0;
+    position: fixed;
+}
+footer nav {
+    display: flex;
+    flex-flow: row wrap;
+}
+footer nav ul {
+    list-style-type: none;
+    justify-content: center;
+    display: flex;
+}
+
+footer nav ul li {
+    width: 20vw;
+    height: auto;
+    text-align: left;
+
+}
+footer nav ul li:first-child {
+   text-align: left;
+    margin-left: 10px;
+}
+footer nav ul li:last-child {
+   margin-left: 10px;
+}
+footer nav img {
+    width: 5vw;
+    height: auto;
+}
+
+main {
+    padding-bottom: 100px;
+}
+
+.container {
+    width: 95vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.page_title {
+    font-size: 2rem;
+    padding: 10px;
+    background-color: #18181a;
+    color: white;
+}
+.following_trend {
+    font-size: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #18181a;
+    display: flex;
+}
+.following_btn {
+    width: 50vw;
+    text-align: center;
+    justify-content: flex-start;
+    color: white;
+}
+.trending_btn {
+    width: 50vw;
+    text-align: center;
+    justify-content: flex-end;
+    color: white;
+}
+.following_trend .active {
+    box-shadow: 2px 4px #272727;
+}
+
+
+.content {
+    width: 80vw;
+    height: 50vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
