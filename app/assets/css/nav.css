@@ -1,0 +1,131 @@
+:root {
+    font-size: 14px;
+    font-family: 'Muli';
+    --bg-primary: black;
+    --text-primary: white;
+    --text-secondary: #F4F4F4;
+    --bg-secondary: #1B1B1B;
+}
+
+body {
+    color: black;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: white; 
+}
+::-webkit-scrollbar-thumb {
+  background: black; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+main {
+    margin-left: 5rem;
+}
+.navbar {
+    position: fixed;
+    background-color: var(--bg-primary);
+    transition: width 400ms ease;
+}
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-item {
+    width: 100%;
+}
+.nav-item:last-child {
+    margin-top: auto;
+}
+.nav-item:hover {
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary);
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: 400ms ease;
+}
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+    background-color: var(--bg-secondary);
+}
+
+.link-text {
+    display: none;
+    margin-left: 1rem;
+}
+.nav-link svg {
+    fill: white;
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+.logo svg {
+    margin: 0 1.5rem;
+    width: 2rem;
+    height: auto;
+    transform: rotate(0deg);
+    transition: transform 500ms;
+}
+.navbar:hover .logo svg {
+    transform: rotate(-180deg);
+}
+
+/* Mobile nav */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+    .logo {
+        display: none;
+    }
+    .navbar-nav {
+        flex-direction: row;
+    }
+    .nav-link {
+        justify-content: center;
+    }
+    main {
+        margin: 0;
+        margin-bottom: 6rem;
+    }
+    
+    :root {
+        font-size: 10px;
+    }
+}
+
+/* Large screen */
+@media only screen and (min-width: 600px) {
+    .navbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+    .navbar:hover {
+        width: 16rem;
+    }
+    .navbar:hover .link-text {
+        display: block;
+    }
+}
