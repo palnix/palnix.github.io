@@ -1,0 +1,196 @@
+:root {
+    --text-col:     #C8C8C8;
+    --heading-col:  #F3F3F3; /* C8C8C8 */
+    
+    --bg-col:       #262938;
+    --fg-col:       #2E2F40;
+    --fg-secondary: #363747;
+    
+    --toggle-col:   #00ECC8;
+    --nav-w: 14rem;
+    --nav-w-col: 0rem;
+    
+    --btn-col:      #4C35F9;
+}
+
+body {
+    background-color: var(--bg-col);
+}
+
+#error-message {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    opacity: 0.8;
+    display: none;
+}
+#success-message {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lawngreen;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    bottom: 0;
+    position: fixed;
+    display: none;
+}
+
+main {
+    margin-left: var(--nav-w-col);
+    color: var(--text-col);
+}
+
+/** Navigation bar */
+#nav {
+    width: var(--nav-w-col);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+}
+#nav #nav-toggle {
+    fill: var(--toggle-col);
+    width: 3rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+#nav #nav-bar {
+    display: none;
+    flex-direction: column;
+    width: auto;
+    margin: 0;
+}
+#nav #nav-bar .nav-item {
+    width: 100%;
+    list-style-type: none;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    transition: 200ms ease;
+    align-items: center;
+}
+#nav #nav-bar .nav-item:hover {
+    background-color: var(--fg-secondary);
+}
+#nav #nav-bar .nav-text {
+    color: var(--text-col);
+}
+
+#page-title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--heading-col);
+    padding-top: 1rem;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+    background-color: var(--fg-secondary);
+    padding: 10px;
+}
+
+.container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+}
+
+/** Trending, Most Recent and Following */
+.post {
+    width: 100%;
+    height: auto;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+}
+.post .author-picture {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    display: inline;
+    float: left;
+}
+.post .author-name {
+    display: block;
+}
+.post .post-time {
+    float: right;
+    display: inline;
+}
+.post .post-media {
+    width: 100%;
+    max-height: 50vh;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+.post .post-options {
+    flex-direction: column;
+    float: right;
+}
+.post .post-stats {
+    display: flex;
+    flex-direction: row;
+}
+.post .post-stats .stat {
+    margin-right: 1rem;
+    min-width: 2rem;
+}
+.post .post-caption {
+    width: 70%;
+    margin-top: 1rem;
+    background-color: #2A2A2A;
+    padding: 10px;
+}
+.post .follow {
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 5rem;
+    min-height: 15px;
+    text-decoration: none;
+    border: none;
+    background-color: var(--btn-col);
+    color: white;
+}
+
+.post .following {
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 5rem;
+    min-height: 15px;
+    text-decoration: none;
+    border: none;
+    background-color: dimgrey;
+    color: white;
+}
+
+.post svg {
+    width: 2rem;
+    height: 2rem;
+}
+.post .share {
+    fill: white;
+}
+.post .post-stats a {
+    color: white;
+}
+.post .report a {
+    font-size: 12px;
+    color: grey;
+}
+
+
+
+
+
+
+
+

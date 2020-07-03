@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Palnix</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:200,300,400,500,600,700,800,900&display=swap">
+        <link rel="stylesheet" href="root.css">
+        <link rel="stylesheet" href="navigation.css">
+        <style>
+            #content {
+                display: block;
+            }
+            #user-profile {
+                display: none;
+            }
+            #post {
+                display: none;
+            }
+            #settings {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <div id="error-message"></div>
+        <div id="success-message"></div>
+        
+        <!-- Static navigation -->        
+        <nav id="nav">
+            <svg id="nav-toggle">
+                <circle cx="10" cy="10" r="5"></circle>
+            </svg>
+            <ul id="nav-bar">
+                <li class="nav-item" id="toTrending"><span class="nav-text">Trending</span></li>
+                <li class="nav-item" id="toMostRecent"><span class="nav-text">Most Recent</span></li>
+                <li class="nav-item" id="toFollowing"><span class="nav-text">Following</span></li>
+                <li class="nav-item" id="toProfile"><span class="nav-text">Profile</span></li>
+                <li class="nav-item" id="toSettings"><span class="nav-text">Settings</span></li>
+            </ul>
+        </nav>
+        
+        
+        <main>
+        
+            <!-- Page title is dynamic -->
+            <div id="page-title"></div>
+            <div class="container">
+
+                <!-- 
+                    SPA style; everything is hidden except content.
+                    In this case, the divs act as our page and are 
+                    hidden/shown accordingly.
+
+                    Q: Isn't this inefficient?
+                    A: This is a 1 time load, so there will be a very
+                        short delay (unnoticable). Once everything is loaded, the  
+                        app will respond perfectly, with the only delay being in the 
+                        REST API. 
+
+                        TLDR; It is not inefficient!
+                -->
+
+                <!-- 
+                    Page content is dynamic.
+                    This specifically will contain:
+                        - Most Recent
+                        - Trending
+                        - Following
+                        - User profile
+                -->
+                <div id="content">
+                    <div id="posts">
+                        <div class="post">
+                            <img src="./hearts.gif" class="author-picture" alt="avatar">
+                            <div class="author-name">Awesome Person</div>
+                            <div class="post-time">45 mins ago</div>
+                            <button class="following">Following</button>
+                            <video class="post-media" controls>
+                                <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+                                Your device does not support HTML5 videos.
+                            </video>
+                            <div class="post-options">
+                                <div class="favorite">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path fill="#F94646" d="M63,20.3C63,11.3,55.8,4,46.9,4C40.1,4,34.4,8.3,32,14.3C29.6,8.3,23.9,4,17.1,4C8.2,4,1,11.3,1,20.3
+                                                c0,0.1,0,0.9,0,1.2C1,35.1,22.8,41.4,32,60c9.1-18.6,31.1-24.6,31-38.5C63,21.2,63,20.5,63,20.3z"/>
+                                        </g>
+                                        <g>
+                                            <path fill="#2C2C3D" d="M32,61c-0.4,0-0.7-0.2-0.9-0.6c-4.3-8.6-11.3-14.6-17.6-19.8C6.3,34.5,0,29.2,0,21.5v-1.2
+                                                C0,10.8,7.7,3,17.1,3C23.4,3,29,6.4,32,11.9C35,6.4,40.6,3,46.9,3C56.3,3,64,10.8,64,20.3v1.2c0.1,7.9-6.3,13.2-13.6,19.3
+                                                C44.1,46,37.1,51.9,32.9,60.4C32.7,60.8,32.4,61,32,61C32,61,32,61,32,61z M17.1,5C8.8,5,2,11.9,2,20.3v1.2
+                                                c0,6.8,6,11.8,12.8,17.6c6,5,12.7,10.7,17.2,18.8c4.4-8,11.1-13.6,17.1-18.6c7-5.8,13-10.9,12.9-17.8v-1.2C62,11.9,55.2,5,46.9,5
+                                                c-6.2,0-11.7,3.8-14,9.7c-0.1,0.4-0.5,0.6-0.9,0.6s-0.8-0.3-0.9-0.6C28.8,8.8,23.3,5,17.1,5z"/>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                </div>
+                                <div class="share">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M64,27L37,0v13C16.1,14.1,0,31.8,0,53.7V64c5.9-14.7,20.1-25,36.5-25H37v14.6L64,27z"/>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="post-stats">
+                                <div class="stat views">
+                                    12 views
+                                </div>
+                                <div class="stat likes">10 likes</div>
+                                <div class="stat comments">
+                                    <a href="">4 comment</a>
+                                </div>
+                            </div>
+                            <div class="post-caption">This is so relatable and I need to add some content here lol #school #gcse</div>
+                            <div class="report"><a href="">Report this post</a></div>
+                        </div>
+                        
+                        <div class="post">
+                            <img src="https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s320x320/95922886_551117062499837_6589994929022304256_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=zySFa8Y48xIAX8d7jBm&oh=c4bd6461f1aabcc757edf84198e2222b&oe=5F299047" class="author-picture" alt="avatar">
+                            <div class="author-name">The snitch</div>
+                            <div class="post-time">1 day ago</div>
+                            <button class="follow">Follow</button>
+                            <video class="post-media" controls>
+                                <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+                                Your device does not support HTML5 videos.
+                            </video>
+                            <div class="post-options">
+                                <div class="favorite">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path fill="#F94646" d="M63,20.3C63,11.3,55.8,4,46.9,4C40.1,4,34.4,8.3,32,14.3C29.6,8.3,23.9,4,17.1,4C8.2,4,1,11.3,1,20.3
+                                                c0,0.1,0,0.9,0,1.2C1,35.1,22.8,41.4,32,60c9.1-18.6,31.1-24.6,31-38.5C63,21.2,63,20.5,63,20.3z"/>
+                                        </g>
+                                        <g>
+                                            <path fill="#2C2C3D" d="M32,61c-0.4,0-0.7-0.2-0.9-0.6c-4.3-8.6-11.3-14.6-17.6-19.8C6.3,34.5,0,29.2,0,21.5v-1.2
+                                                C0,10.8,7.7,3,17.1,3C23.4,3,29,6.4,32,11.9C35,6.4,40.6,3,46.9,3C56.3,3,64,10.8,64,20.3v1.2c0.1,7.9-6.3,13.2-13.6,19.3
+                                                C44.1,46,37.1,51.9,32.9,60.4C32.7,60.8,32.4,61,32,61C32,61,32,61,32,61z M17.1,5C8.8,5,2,11.9,2,20.3v1.2
+                                                c0,6.8,6,11.8,12.8,17.6c6,5,12.7,10.7,17.2,18.8c4.4-8,11.1-13.6,17.1-18.6c7-5.8,13-10.9,12.9-17.8v-1.2C62,11.9,55.2,5,46.9,5
+                                                c-6.2,0-11.7,3.8-14,9.7c-0.1,0.4-0.5,0.6-0.9,0.6s-0.8-0.3-0.9-0.6C28.8,8.8,23.3,5,17.1,5z"/>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                </div>
+                                <div class="share">
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M64,27L37,0v13C16.1,14.1,0,31.8,0,53.7V64c5.9-14.7,20.1-25,36.5-25H37v14.6L64,27z"/>
+                                        </g>
+                                    </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="post-stats">
+                                <div class="stat views">
+                                    12 views
+                                </div>
+                                <div class="stat likes">10 likes</div>
+                                <div class="stat comments">
+                                    <a href="">4 comment</a>
+                                </div>
+                            </div>
+                            <div class="post-caption">This is so relatable and I need to add some content here lol #school #gcse</div>
+                            <div class="report"><a href="">Report this post</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User profile is dynamic and shows the user currently wanting to view -->
+                <div id="user-profile"></div>
+
+                <!-- Upload/post is not dynamic -->
+                <div id="post"></div>
+
+                <!-- Settings are not dynamic -->
+                <div id="settings"></div>
+            </div>
+            
+        </main>
+        
+        <!-- JQuery to handle dynamic content loading-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+                   
+            var connectAttempts = 0;
+
+            /** Functions */
+            jQuery.fn.extend({
+                
+                connectSocket: function() {
+                    try {
+                        var socket = new WebSocket("ws://localhost:8080");
+
+                        socket.onopen = function() {
+                            if(connectAttempts > 0) {
+                                $().showSuccess("Back online");
+                                connectAttempts = 0;
+                            }
+                        }
+
+                        socket.onmessage = function(msg) {
+                            console.log("Received from WebSocket;" + msg);
+                        }
+
+                        socket.onclose = function() {
+                            setTimeout(function() {
+                                  $().retryConnectSocket();
+                                }, 1000);
+                            $().showError("No connection to server, retrying... " + connectAttempts);
+                        }
+                    } catch(exception) {
+                        $().showError("No internet connection detected");
+                    }
+                },
+                
+                retryConnectSocket: function() {
+                    if(connectAttempts++ >= 30) {
+                        $().showError("Failed to connect to server. Please try again another time.");
+                    } else {
+                        $().connectSocket();
+                    }
+                },
+                
+                hideAll: function() {
+                    $("#content").hide();
+                    $("#user-profile").hide();
+                    $("#post").hide();
+                    $("#settings").hide();
+                },
+                
+                showError: function(msg) {
+                    $("#error-message").last().html(msg);
+                    $("#error-message").fadeIn(500);
+                },
+                
+                hideError: function(msg) {
+                    $("#error-message").fadeOut(500);
+                },
+                
+                showSuccess: function(msg) {
+                    $("#success-message").last().html(msg);
+                    $("#success-message").fadeIn(500);
+                    $().hideError();
+                    setTimeout(function() {
+                        $().hideSuccess();
+                    }, 4000);
+                },
+                
+                hideSuccess: function() {
+                    $("#success-message").fadeOut(500);
+                },
+                
+                show: function(div) {
+                    $(div).fadeIn(500);
+                    $().hideNav();
+                },
+                
+                showNav: function() {
+                    $("#nav").css("width", "30vh");
+                    $("#nav").css("background-color", "#2E2F40");
+                    $("#nav").css("border-top-right-radius", "20px");
+                    $("#nav").css("border-bottom-right-radius", "20px");
+                    $('#nav-bar').fadeIn(100);
+                    showNav = true;
+                },
+                
+                hideNav: function() {
+                    $("#nav").css("width", "1rem");
+                    $("#nav").css("background-color", "");
+                    $('#nav-bar').hide();
+                    showNav = false;
+                },
+                
+                setTitle: function(title) {
+                    $("#page-title").last().html(title);
+                },
+                
+                loadTrending: function() {
+                    //$("#posts").last().html("Append all posts html");
+                }
+            });
+            
+            $().connectSocket();
+            
+            var showNav = true;
+            $().loadTrending();
+            $().setTitle("Trending");
+            $().show("#content");
+            
+            
+            $("main").click(function() {
+                $().hideNav();
+            });
+            
+            $("#nav-toggle").click(function() {
+                if(showNav) {
+                    $().hideNav();
+                } else {
+                    $().showNav();
+                }
+            });
+            
+            //Trending button
+            $("#toTrending").click(function() {
+                $().loadTrending();
+                $().setTitle("Trending");
+                $().hideAll();
+                $().show("#content");
+            });
+            
+            //Most Recent button
+            $("#toMostRecent").click(function() {
+                //TODO: Load most recent
+                $().setTitle("Most Recent");
+                $().hideAll();
+                $().show("#content");
+            });
+            
+            //Following button
+            $("#toFollowing").click(function() {
+                //TODO: Load following
+                $().setTitle("Following");
+                $().hideAll();
+                $().show("#content");
+            });
+            
+            //Profile button
+            $("#toProfile").click(function() {
+                //TODO: Get profile Id
+                $().setTitle("Profile");
+                $().hideAll();
+                $().show("#settings");
+            });
+            
+            //Settings button
+            $("#toSettings").click(function() {
+                $().setTitle("Settings");
+                $().hideAll();
+                $().show("#settings");
+            });
+        });
+        </script>
+    </body>
+</html>

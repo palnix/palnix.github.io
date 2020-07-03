@@ -1,0 +1,13 @@
+:root {
+    font-size: 14px;
+    font-family: 'Muli';
+    --bg-primary: black;
+    --text-primary: white;
+    --text-secondary: #F4F4F4;
+    --bg-secondary: #1B1B1B;   
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
